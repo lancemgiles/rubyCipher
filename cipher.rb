@@ -13,8 +13,16 @@ def caesar_cipher(string, num)
 			ascii.push(c.ord)
 		end
 	}
-	p ascii
-	# shift = modify.map { |n| (n + num).chr}
+	
+	shift = ascii.map { |n| 
+		if (n.is_a? Integer) 
+			(n + num).chr
+			
+		else
+			n
+		end
+	}
+		
 	# shift.join
 	# loop through asciiShift to find if any ascii values have moved above or below
 	# letter ranges
