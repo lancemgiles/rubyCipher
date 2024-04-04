@@ -1,9 +1,9 @@
-require 'pry-byebug'
-
 def caesar_cipher(string, num)
-	getChars = string.chars
+	get_chars = string.chars
+
 	ascii = []
-	modify = getChars.each{
+
+	modify = get_chars.each{
 		|c|
 		if (c.ord < 65) ||
 			 (c.ord > 90 && c.ord < 97 ) ||
@@ -25,21 +25,12 @@ def caesar_cipher(string, num)
 			n
 		end
 	}
-	p shift
 
+	nums_to_string = shift.map{ |c|
+		if (c.is_a? Integer)
+			c.chr
+		else
+			c
+		end}.join
 
-		
-	# shift.join
-	# loop through asciiShift to find if any ascii values have moved above or below
-	# letter ranges
-	# items outside of that range should remain in the array,
-	# but not be modified
-	# join characters back into a string
 end
-
-
-input = "{ZAB!"
-puts caesar_cipher(input, 1)
-
-# input2 = "{ZAB!"
-# puts caesar_cipher(input2, 1)
