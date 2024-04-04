@@ -15,13 +15,20 @@ def caesar_cipher(string, num)
 	}
 	
 	shift = ascii.map { |n| 
-		if (n.is_a? Integer) 
-			(n + num).chr
-			
+		if (n.is_a? Integer)
+			if ((n + num) > 122)
+				n = n + num - 26
+			else
+				n + num
+			end
 		else
 			n
 		end
 	}
+	p shift
+
+	wrap = shift.map { |n|
+
 		
 	# shift.join
 	# loop through asciiShift to find if any ascii values have moved above or below
@@ -29,6 +36,7 @@ def caesar_cipher(string, num)
 	# items outside of that range should remain in the array,
 	# but not be modified
 	# join characters back into a string
+	}
 end
 
 
