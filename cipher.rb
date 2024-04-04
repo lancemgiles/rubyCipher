@@ -2,12 +2,12 @@ require 'pry-byebug'
 
 def caesar_cipher(string, num)
 	getChars = string.chars
-	inclusions = getChars.reject{ |c| (c.ord < 65) || (c.ord > 122)}
-	getAscii = inclusions.map { |c| c.ord}
 	ascii = []
 	modify = getChars.each{
 		|c|
-		if (c.ord < 65) || (c.ord > 122)
+		if (c.ord < 65) ||
+			 (c.ord > 90 && c.ord < 97 ) ||
+			 (c.ord > 122)
 			ascii.push(c)
 		else
 			ascii.push(c.ord)
@@ -16,7 +16,7 @@ def caesar_cipher(string, num)
 	
 	shift = ascii.map { |n| 
 		if (n.is_a? Integer)
-			if ((n + num) > 122)
+			if ((n + num) > 122) || ((n + num) > 90 && (n + num) < 97)
 				n = n + num - 26
 			else
 				n + num
@@ -27,7 +27,6 @@ def caesar_cipher(string, num)
 	}
 	p shift
 
-	wrap = shift.map { |n|
 
 		
 	# shift.join
@@ -36,11 +35,10 @@ def caesar_cipher(string, num)
 	# items outside of that range should remain in the array,
 	# but not be modified
 	# join characters back into a string
-	}
 end
 
 
-input = "{zab!"
+input = "{ZAB!"
 puts caesar_cipher(input, 1)
 
 # input2 = "{ZAB!"
