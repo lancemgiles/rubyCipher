@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require '../cipher'
+require './lib/cipher'
 
 describe CaesarCipher do
   describe '#cipher' do
